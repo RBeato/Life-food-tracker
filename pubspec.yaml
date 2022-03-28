@@ -14,7 +14,6 @@ dependencies:
   fluttertoast: ^8.0.8
   flutter_riverpod: ^1.0.3
   hive: ^2.0.5
-  enum_to_string: ^2.0.1
   syncfusion_flutter_calendar: 19.4.50
   syncfusion_flutter_charts: 19.4.50
   syncfusion_flutter_sliders: 19.4.50

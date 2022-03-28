@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lifestyle_tracker/constants.dart';
 
 import 'formulary.dart';
 
@@ -39,10 +38,7 @@ class _DailyEditPageState extends State<DailyEditPage> {
                 },
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Formulary(),
-            ),
+            const Formulary(),
           ],
         ),
       ),

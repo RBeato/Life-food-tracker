@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:lifestyle_tracker/UI/common_widgets/item_list_editor.dart';
 import 'package:lifestyle_tracker/constants.dart';
 
-import 'formulary.dart';
-
-class DailyEditPopUp extends StatefulWidget {
-  const DailyEditPopUp({
+class ParameterListEditPopUp extends StatefulWidget {
+  const ParameterListEditPopUp({
     Key? key,
   }) : super(key: key);
 
   @override
-  _DailyEditPopUpState createState() => _DailyEditPopUpState();
+  _ParameterListEditPopUpState createState() => _ParameterListEditPopUpState();
 }
 
-class _DailyEditPopUpState extends State<DailyEditPopUp> {
+class _ParameterListEditPopUpState extends State<ParameterListEditPopUp> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -63,6 +61,15 @@ class _DailyEditPopUpState extends State<DailyEditPopUp> {
                   child: Image.asset("assets/images/meal.png")),
             ),
           ),
+          Positioned(
+              top: MediaQuery.of(context).size.height * 0.06,
+              right: 15.0,
+              child: IconButton(
+                icon: const Icon(Icons.close, color: Colors.grey),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )),
         ],
       ),
     );

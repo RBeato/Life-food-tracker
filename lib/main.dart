@@ -19,7 +19,7 @@ void main() {
 //TODO: Associate Routine model class items with images
 //TODO: use Hive;
 //TODO: Use https://github.com/openfoodfacts/openfoodfacts-dart/blob/master/DOCUMENTATION.md ??
-//TODO: Possibility to edit the meditation, exercise, symptoms,supplement and medication items lits
+//TODO: Possibility to edit the meditation, exercise, symptoms,supplement and medication items lists
 //TODO: Add an alternate meal list with user specified items. "Your Food List".
 //TODO: Insert reset button in the settings page to erase all data and reset original lists
 //TODO: Add carousels inside the daily_edit_page

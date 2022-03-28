@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lifestyle_tracker/UI/common_widgets/time_picker_spinner.dart';
 
+import '../../constants.dart';
+
 class CustomTimePicker extends StatefulWidget {
-  CustomTimePicker({Key? key, this.twoTimePickers = true}) : super(key: key);
-  bool twoTimePickers;
+  CustomTimePicker(this.parameter, {Key? key}) : super(key: key);
+  String parameter;
 
   @override
   State<CustomTimePicker> createState() => Custom_TimePickerState();
@@ -14,11 +16,12 @@ class Custom_TimePickerState extends State<CustomTimePicker> {
 
   @override
   Widget build(BuildContext context) {
-    bool twoPickers = widget.twoTimePickers;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        twoPickers ? Text("start:") : Text("at:"),
+        Constants.needsTwoTimePickers(widget.parameter)
+            ? Text("start:")
+            : Text("at:"),
         Container(
             padding: const EdgeInsets.only(
               top: 10,
@@ -32,7 +35,7 @@ class Custom_TimePickerState extends State<CustomTimePicker> {
                 });
               },
             )),
-        twoPickers
+        Constants.needsTwoTimePickers(widget.parameter)
             ? Row(children: [
                 SizedBox(width: 35.0),
                 Text("end:"),

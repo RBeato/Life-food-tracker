@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Stats extends StatelessWidget {
-  const Stats({Key? key}) : super(key: key);
+import 'energy_chart.dart';
+
+class StatsPage extends StatelessWidget {
+  const StatsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +13,12 @@ class Stats extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: const [
-            Text("Days you stick to the diet!"),
-            Text("Detailed graphs of energy through selected time"),
-            Text("Graph of sleep trough selected time"),
-            Text("Graph of mood trough selected time"),
+            Text(
+                "Days you stick to the diet, show in calendar with some sort of icon or mark!"),
+            EnergyChart(),
             Text(
                 "Ai correlation go plot possible causes of symptoms, mood, sleep quality, and"),
+            Text("Show diet type change date"),
           ],
         ),
       ),

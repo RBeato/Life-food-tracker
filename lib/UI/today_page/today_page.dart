@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:lifestyle_tracker/UI/common_widgets/dialog_box.dart';
-import 'package:lifestyle_tracker/UI/today/day_description.dart';
-import 'package:lifestyle_tracker/UI/today/how_are_you_feeling_today.dart';
+import 'package:lifestyle_tracker/UI/daily_edit_page/daily_edit_page.dart';
+import 'package:lifestyle_tracker/UI/today_page/calendar_view_selection.dart';
 import 'package:lifestyle_tracker/constants.dart';
 import 'package:lifestyle_tracker/repositories/mock_data_daily_routines.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-import 'daily_edit/daily_edit_page.dart';
+import 'day_description.dart';
+import 'how_are_you_feeling_today.dart';
 
-class Today extends StatefulWidget {
-  const Today({Key? key}) : super(key: key);
+class TodayPage extends StatefulWidget {
+  const TodayPage({Key? key}) : super(key: key);
 
   @override
-  State<Today> createState() => _TodayState();
+  State<TodayPage> createState() => _TodayPageState();
 }
 
-class _TodayState extends State<Today> {
+class _TodayPageState extends State<TodayPage> {
   late List<Appointment> appointments = <Appointment>[];
   String dayDescription = "Today is the day!";
   DateTime now = DateTime.now();
@@ -79,7 +80,8 @@ class _TodayState extends State<Today> {
               ),
             ),
           ),
-          Expanded(flex: 3, child: DayDescription(description: dayDescription)),
+          Expanded(flex: 2, child: DayDescription(description: dayDescription)),
+          const Expanded(flex: 1, child: CalendarViewSelection()),
           Expanded(flex: 7, child: TodayCalendar(appointments: appointments)),
           Expanded(
               flex: 4,

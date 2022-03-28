@@ -19,15 +19,6 @@ class DayDescription extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Type of calendar view selection!\"",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            )
           ],
         ));
   }

@@ -3,19 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifestyle_tracker/models/substances_options.dart';
 
-enum Symptomatology {
-  legPain,
-  chestPain,
-  abdominalPain,
-  diarrhea,
-  obstipation,
-  badVision,
-  weakness,
-  dizziness,
-  brainFog,
-  fatigue,
-}
-
 class DailyRegister {
   DateTime registerCreationDate;
   String? description;
@@ -103,7 +90,7 @@ class Exercise {
 }
 
 class Symptom {
-  List<Symptomatology>? symptoms;
+  List<String>? symptoms;
   int? symptomAverageSeverity;
   Symptom({
     this.symptoms,

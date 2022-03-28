@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'auto_eval_quantified_params.dart';
+import '../../constants.dart';
 import 'description.dart';
-import 'exercise_options.dart';
-import 'medication_options.dart';
-import 'meditation_options.dart';
-import 'supplement_options.dart';
-import 'symptoms_panel.dart';
+import 'auto_eval_quantified_params.dart';
+import 'carousel_list.dart';
 
 final showSymptomsPanelProvider = StateProvider<bool>((ref) => false);
 
@@ -35,21 +31,15 @@ class Formulary extends ConsumerWidget {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Description(),
-                Divider(),
-                Text(
-                  "Weight: 76.0 Kg",
+              children: [
+                const Description(),
+                const Text(
+                  "Weight: 76.0 Kg add textform field",
                   textAlign: TextAlign.start,
                 ),
-                Divider(),
-                AutoEvalQuantifiedParams(),
-                Divider(),
-                ExerciseOptions(),
-                MeditationOptions(),
-                SymptomsPanel(),
-                SupplementOptions(),
-                MedicationOptions(),
+                const AutoEvalQuantifiedParams(),
+                CarouselList(parameters: Constants.routineActions),
+                CarouselList(parameters: Constants.medsAndSymptoms),
               ],
             ),
           ),

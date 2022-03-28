@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 
 class ItemListEditor extends StatefulWidget {
-  ItemListEditor({Key? key}) : super(key: key);
+  const ItemListEditor({Key? key}) : super(key: key);
 
   @override
   State<ItemListEditor> createState() => _ItemListEditorState();
@@ -26,7 +26,7 @@ class _ItemListEditorState extends State<ItemListEditor> {
                       Animation<double> animation) =>
                   buildItem(items[index], index, animation))),
       Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: buildInsertButton(),
       )
     ]);

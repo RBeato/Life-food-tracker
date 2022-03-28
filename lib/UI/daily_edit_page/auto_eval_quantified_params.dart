@@ -10,7 +10,8 @@ class AutoEvalQuantifiedParams extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         children: Constants.autoEvaluationQuantifiedParameters
-            .map((item) => SliderButton(title: item))
+            .map((item) =>
+                SliderButton(title: Constants.dailyRegisterToUIString[item]!))
             .toList());
   }
 }

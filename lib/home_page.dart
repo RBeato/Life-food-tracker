@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:lifestyle_tracker/UI/today/today.dart';
 
 import 'UI/settings_page/settings.dart';
-import 'UI/stats/stats.dart';
+import 'UI/stats/stats_page.dart';
+import 'UI/today_page/today_page.dart';
 
 final tabIndexProvider = StateProvider.autoDispose<int>((ref) => 0);
 
@@ -20,6 +20,7 @@ class HomePageState extends ConsumerState<HomePage>
   late DateTime current;
 
   @override
+  // ignore: must_call_super
   Widget build(BuildContext context) {
     int tabIndex = ref.watch(tabIndexProvider);
     return Scaffold(
@@ -71,11 +72,11 @@ class HomePageState extends ConsumerState<HomePage>
 
   Widget _getBody(int tabIndex) {
     if (tabIndex == 0) {
-      return const Today();
+      return const TodayPage();
     } else if (tabIndex == 1) {
       //   return const Calendar();
       // } else if (tabIndex == 2) {
-      return const Stats();
+      return const StatsPage();
     } else {
       return const Settings();
     }
