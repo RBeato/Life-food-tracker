@@ -228,7 +228,7 @@ List<DailyRegister> mockRegisters = [
   ),
   DailyRegister(
     registerCreationDate: DateTime.now(),
-    description: "It has been a fantastic day",
+    description: "It has been a fantastic day It has been a fantastic day",
     sleepQuality: 8,
     energyLevel: 7,
     mood: 8,

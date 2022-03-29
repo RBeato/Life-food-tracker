@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'formulary.dart';
 
 class DailyEditPage extends StatefulWidget {
-  final String title, descriptions, text;
-  // final Image img;
-
   const DailyEditPage({
     Key? key,
-    required this.title,
-    required this.descriptions,
-    required this.text,
-    // required this.img,
   }) : super(key: key);
 
   @override
@@ -29,14 +21,24 @@ class _DailyEditPageState extends State<DailyEditPage> {
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.save),
+                  onPressed: () {
+                    //if there is no register create
+                    //if there is edit
+                    //PLACE THIS logic inside the provider
+                  },
+                ),
+              ],
             ),
             const Formulary(),
           ],

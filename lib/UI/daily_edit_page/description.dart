@@ -32,10 +32,7 @@ class _DescriptionState extends ConsumerState<Description> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("Description"),
-            ),
+            const Text("Description"),
             showDescriptionPanel
                 ? Container()
                 : IconButton(

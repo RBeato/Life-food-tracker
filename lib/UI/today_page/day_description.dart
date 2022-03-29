@@ -14,6 +14,8 @@ class DayDescription extends StatelessWidget {
             Center(
               child: Text(
                 "\"$description\"",
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontStyle: FontStyle.italic,
                 ),

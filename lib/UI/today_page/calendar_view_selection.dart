@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final calendarViewProvider = StateProvider.autoDispose<String>((ref) => "day");
+final calendarViewProvider = StateProvider<String>((ref) => "day");
 
 class CalendarViewSelection extends StatelessWidget {
   const CalendarViewSelection({Key? key}) : super(key: key);

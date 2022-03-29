@@ -2,47 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:lifestyle_tracker/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class HowAreYouFeelingToday extends StatelessWidget {
-  const HowAreYouFeelingToday({Key? key, required this.dailyResults})
+class TodayCircularChart extends StatefulWidget {
+  const TodayCircularChart({Key? key, required this.dailyResults})
       : super(key: key);
 
   final Map dailyResults;
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        color: Colors.green.withOpacity(0.3),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const Text(
-                "Change this information according to the selected view!",
-                style: TextStyle(color: Colors.white)),
-            // const Text("Sleep quality ring graphs"),
-            // const Text("Energy level ring graphs"),
-            // const Text("Mood ring graphs"),
-            // const Text("Symptoms ring graphs"),
-            // const Text("Weight: 75 Kg"),
-            FittedBox(
-              child: RadialGraph(dailyResults: dailyResults),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  State<TodayCircularChart> createState() => _TodayCircularChartState();
 }
 
-class RadialGraph extends StatefulWidget {
-  const RadialGraph({Key? key, required this.dailyResults}) : super(key: key);
-  final Map dailyResults;
-
-  @override
-  State<RadialGraph> createState() => _RadialGraphState();
-}
-
-class _RadialGraphState extends State<RadialGraph> {
+class _TodayCircularChartState extends State<TodayCircularChart> {
   late List<DailyResultData> chartData;
   late Map selectedDailyResults;
 
@@ -57,6 +27,7 @@ class _RadialGraphState extends State<RadialGraph> {
     return Container(
       color: Colors.blue.withOpacity(0.3),
       child: SfCircularChart(
+        borderColor: Colors.green,
         legend: Legend(
           isVisible: true,
           overflowMode: LegendItemOverflowMode.wrap,

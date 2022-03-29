@@ -1,22 +1,53 @@
 //overall quality is measured from 1 to 10 (integers only)
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:lifestyle_tracker/models/substances_options.dart';
 
-class DailyRegister {
+part 'daily_register.g.dart';
+
+@HiveType(typeId: 0)
+class DailyRegister extends HiveObject {
+  @HiveField(0)
   DateTime registerCreationDate;
+
+  @HiveField(1)
   String? description;
+
+  @HiveField(2)
   int? sleepQuality;
+
+  @HiveField(3)
   int? energyLevel;
+
+  @HiveField(4)
   int? mood;
-  int? weight;
+
+  @HiveField(5)
+  double? bodyWeight;
+
+  @HiveField(6)
   List<Symptom>? symptoms;
+
+  @HiveField(7)
   List<Exercise>? exercise;
+
+  @HiveField(8)
   List<Meditation>? meditation;
+
+  @HiveField(9)
   List<Meal>? meals;
+
+  @HiveField(10)
   List<Supplement>? supplements;
+
+  @HiveField(11)
   List<Medication>? medication;
+
+  @HiveField(12)
   List<Drink>? drinks;
+
+  @HiveField(13)
   List<Snack>? snacks; //or consider a meal?
 
   DailyRegister({
@@ -24,7 +55,7 @@ class DailyRegister {
     this.description,
     this.sleepQuality,
     this.energyLevel,
-    this.weight,
+    this.bodyWeight,
     this.mood,
     this.symptoms,
     this.exercise,
@@ -41,7 +72,7 @@ class DailyRegister {
       "description": description,
       "sleepQuality": sleepQuality,
       "energyLevel": energyLevel,
-      "weight": weight,
+      "weight": bodyWeight,
       "mood": mood,
       "symptoms": symptoms,
       "exercise": exercise,
@@ -61,7 +92,7 @@ class DailyRegister {
       description: $description,
       sleepQuality: $sleepQuality,
       energyLevel: $energyLevel,
-      weight: $weight,
+      weight: $bodyWeight,
       mood: $mood,
       symptoms: $symptoms,
       exercise: $exercise,
@@ -69,16 +100,29 @@ class DailyRegister {
       meals: $meals,
       supplements: $supplements,
       drinks: $drinks,
-      snacks: $snacks """;
+      snacks: $snacks,
+       """;
   }
 }
 
+@HiveType(typeId: 1)
 class Exercise {
+  @HiveField(0)
   String title = "Workout";
+
+  @HiveField(1)
   Color color = Colors.blue;
+
+  @HiveField(2)
   int? duration;
+
+  @HiveField(3)
   String? exerciseType; //TODO:Create enum
+
+  @HiveField(4)
   int? exerciseQuality; //TODO:Create enum
+
+  @HiveField(5)
   DateTime? dateTime;
 
   Exercise({
@@ -89,21 +133,38 @@ class Exercise {
   });
 }
 
+@HiveType(typeId: 2)
 class Symptom {
+  @HiveField(0)
   List<String>? symptoms;
+
+  @HiveField(1)
   int? symptomAverageSeverity;
+
   Symptom({
     this.symptoms,
     this.symptomAverageSeverity,
   });
 }
 
+@HiveType(typeId: 3)
 class Meditation {
+  @HiveField(0)
   String title = "Meditation";
+
+  @HiveField(1)
   Color color = Colors.purple;
+
+  @HiveField(2)
   int? duration;
+
+  @HiveField(3)
   String? meditationType; //TODO:Create enum
+
+  @HiveField(4)
   int? meditationQuality; //TODO:Create enum
+
+  @HiveField(5)
   DateTime? dateTime;
 
   Meditation({

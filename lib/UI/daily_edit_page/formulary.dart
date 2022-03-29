@@ -32,14 +32,26 @@ class Formulary extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Description(),
-                const Text(
-                  "Weight: 76.0 Kg add textform field",
-                  textAlign: TextAlign.start,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Column(
+                    children: const [
+                      Description(),
+                      SizedBox(height: 15.0),
+                      Text(
+                        "Weight: 76.0 Kg add textform field",
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(height: 15.0),
+                      AutoEvalQuantifiedParams(),
+                    ],
+                  ),
                 ),
-                const AutoEvalQuantifiedParams(),
                 CarouselList(parameters: Constants.routineActions),
                 CarouselList(parameters: Constants.medsAndSymptoms),
+                const SizedBox(
+                  height: 15.0,
+                )
               ],
             ),
           ),
