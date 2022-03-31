@@ -4,22 +4,24 @@ part 'auto_evaluation_parameters.g.dart';
 
 @HiveType(typeId: 9)
 class AutoEvaluationParameter {
-  AutoEvaluationParameter({
-    required this.date,
-    required this.value,
-  });
+  AutoEvaluationParameter({this.sleep, this.mood, this.energy});
 
   @HiveField(0)
-  DateTime date;
+  int? sleep;
 
   @HiveField(1)
-  int value;
+  int? mood;
+
+  @HiveField(2)
+  int? energy;
 
   @override
   String toString() {
     return """
-  date: $date,
-  value: $value,
+  sleep: $sleep,
+  mood: $mood,
+  energy: $energy,
+
 """;
   }
 }

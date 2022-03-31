@@ -25,12 +25,11 @@ class TodayCalendar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final value = ref.watch(calendarViewProvider);
-    CalendarView calendarView = getView(value);
 
     return SfCalendar(
         headerStyle:
             const CalendarHeaderStyle(textStyle: TextStyle(fontSize: 12.0)),
-        view: calendarView,
+        view: getView(value),
         dataSource: NutritionInfo(appointments),
         onTap: (value) {
           if (value.appointments != null) {

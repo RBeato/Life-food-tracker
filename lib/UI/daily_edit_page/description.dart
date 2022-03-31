@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lifestyle_tracker/providers/daily_register_provider.dart';
+
+import 'custom_text_field.dart';
 
 final showDescriptionPanelProvider = StateProvider<bool>((ref) => false);
-final descriptionStringProvider =
-    StateProvider<String>((ref) => "Please add a description for today!");
 
 class Description extends ConsumerStatefulWidget {
   const Description({Key? key}) : super(key: key);
@@ -24,7 +25,8 @@ class _DescriptionState extends ConsumerState<Description> {
   @override
   Widget build(BuildContext context) {
     bool showDescriptionPanel = ref.watch(showDescriptionPanelProvider);
-    String descriptionString = ref.watch(descriptionStringProvider);
+    String descriptionString = ref.watch(registerProvider).description ??
+        "Please add a description for today!";
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -39,7 +41,6 @@ class _DescriptionState extends ConsumerState<Description> {
                     onPressed: () {
                       ref.read(showDescriptionPanelProvider.notifier).state =
                           !showDescriptionPanel;
-                      //TODO: Close all other opened panels
                     },
                     icon: const Icon(
                       Icons.edit,
@@ -52,39 +53,19 @@ class _DescriptionState extends ConsumerState<Description> {
         showDescriptionPanel
             ? Column(
                 children: [
-                  TextField(
-                    controller: _descriptionCtrl,
-                    decoration: const InputDecoration(
-                      hintText: 'How was it?...',
-                      hintStyle: TextStyle(
-                          fontStyle: FontStyle.italic, fontSize: 14.0),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.lightBlueAccent, width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.lightBlueAccent, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
-                  ),
+                  CustomTextField(
+                      descriptionCtrl: _descriptionCtrl,
+                      hintText: "How was your day?"),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                       child: const Text("Save"),
                       onPressed: () {
-                        ref.read(descriptionStringProvider.notifier).state =
-                            _descriptionCtrl.text;
                         ref.read(showDescriptionPanelProvider.notifier).state =
                             !showDescriptionPanel;
-                        //TODO: Close all other opened panels},
+                        ref
+                            .read(registerProvider.notifier)
+                            .edit(description: _descriptionCtrl.text);
                       },
                     ),
                   ),

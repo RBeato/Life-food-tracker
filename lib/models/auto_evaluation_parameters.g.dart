@@ -18,19 +18,22 @@ class AutoEvaluationParameterAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return AutoEvaluationParameter(
-      date: fields[0] as DateTime,
-      value: fields[1] as int,
+      sleep: fields[0] as int?,
+      mood: fields[1] as int?,
+      energy: fields[2] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, AutoEvaluationParameter obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.date)
+      ..write(obj.sleep)
       ..writeByte(1)
-      ..write(obj.value);
+      ..write(obj.mood)
+      ..writeByte(2)
+      ..write(obj.energy);
   }
 
   @override

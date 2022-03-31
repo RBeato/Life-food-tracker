@@ -9,7 +9,7 @@ part 'daily_register.g.dart';
 @HiveType(typeId: 0)
 class DailyRegister extends HiveObject {
   @HiveField(0)
-  DateTime registerCreationDate;
+  String? registerCreationDate;
 
   @HiveField(1)
   String? description;
@@ -51,7 +51,7 @@ class DailyRegister extends HiveObject {
   List<Snack>? snacks; //or consider a meal?
 
   DailyRegister({
-    required this.registerCreationDate,
+    this.registerCreationDate,
     this.description,
     this.sleepQuality,
     this.energyLevel,

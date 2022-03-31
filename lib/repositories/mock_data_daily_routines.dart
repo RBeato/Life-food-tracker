@@ -1,11 +1,13 @@
 import 'package:lifestyle_tracker/models/daily_register.dart';
 import 'package:lifestyle_tracker/models/substances_options.dart';
+import 'package:intl/intl.dart';
 
 import '../constants.dart';
 
 List<DailyRegister> mockRegisters = [
   DailyRegister(
-    registerCreationDate: DateTime.now().subtract(const Duration(days: 3)),
+    registerCreationDate: DateFormat('yyyy-MM-dd')
+        .format(DateTime.now().subtract(const Duration(days: 3))),
     description: "It has been a fantastic day",
     sleepQuality: 8,
     energyLevel: 9,
@@ -79,11 +81,12 @@ List<DailyRegister> mockRegisters = [
     ],
   ),
   DailyRegister(
-    registerCreationDate: DateTime.now().subtract(const Duration(days: 2)),
+    registerCreationDate: DateFormat('yyyy-MM-dd')
+        .format(DateTime.now().subtract(const Duration(days: 2))),
     description: "It has been a fantastic day",
-    sleepQuality: 0,
-    energyLevel: 0,
-    mood: 0,
+    sleepQuality: null,
+    energyLevel: null,
+    mood: null,
     symptoms: [
       Symptom(
         symptoms: [Constants.symptoms[0]],
@@ -153,7 +156,8 @@ List<DailyRegister> mockRegisters = [
     ],
   ),
   DailyRegister(
-    registerCreationDate: DateTime.now().subtract(const Duration(days: 1)),
+    registerCreationDate: DateFormat('yyyy-MM-dd')
+        .format(DateTime.now().subtract(const Duration(days: 1))),
     description: "It has been a fantastic day",
     sleepQuality: 9,
     energyLevel: 6,
@@ -227,7 +231,7 @@ List<DailyRegister> mockRegisters = [
     ],
   ),
   DailyRegister(
-    registerCreationDate: DateTime.now(),
+    registerCreationDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
     description: "It has been a fantastic day It has been a fantastic day",
     sleepQuality: 8,
     energyLevel: 7,

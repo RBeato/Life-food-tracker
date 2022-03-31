@@ -17,7 +17,7 @@ class DailyRegisterAdapter extends TypeAdapter<DailyRegister> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return DailyRegister(
-      registerCreationDate: fields[0] as DateTime,
+      registerCreationDate: fields[0] as String?,
       description: fields[1] as String?,
       sleepQuality: fields[2] as int?,
       energyLevel: fields[3] as int?,

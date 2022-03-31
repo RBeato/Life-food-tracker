@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:lifestyle_tracker/UI/daily_edit_page/daily_edit_page.dart';
 import 'package:lifestyle_tracker/UI/today_page/calendar_view_selection.dart';
 import 'package:lifestyle_tracker/constants.dart';
 import 'package:lifestyle_tracker/repositories/mock_data_daily_routines.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:intl/intl.dart';
 
 import 'calendar.dart';
 import 'day_description.dart';
@@ -25,7 +25,8 @@ class _TodayPageState extends State<TodayPage> {
 
   @override
   void initState() {
-    DateTime currentDate = DateTime(now.year, now.month, now.day);
+    String currentDate =
+        DateFormat('yyyy-MM-dd').format(DateTime(now.year, now.month, now.day));
     getDailyInfo(currentDate);
     super.initState();
   }
@@ -33,17 +34,16 @@ class _TodayPageState extends State<TodayPage> {
   //use!???
   @override
   void dispose() {
-    Hive.close();
+    // Hive.close();
     //or
-    Hive.box('registers').close();
+    // Hive.box('registers').close();
 
     super.dispose();
   }
 
-  getDailyInfo(DateTime currentDate) {
+  getDailyInfo(String currentDate) {
     mockRegisters
-        .where(
-            (register) => register.registerCreationDate.day == currentDate.day)
+        .where((register) => register.registerCreationDate! == currentDate)
         .forEach((element) {
       dayDescription = element.description ?? dayDescription;
       for (var action in Constants.routineActions) {

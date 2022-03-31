@@ -4,8 +4,8 @@ import 'package:lifestyle_tracker/UI/common_widgets/time_picker_spinner.dart';
 import '../../constants.dart';
 
 class CustomTimePicker extends StatefulWidget {
-  CustomTimePicker(this.parameter, {Key? key}) : super(key: key);
-  String parameter;
+  const CustomTimePicker(this.parameter, {Key? key}) : super(key: key);
+  final String parameter;
 
   @override
   State<CustomTimePicker> createState() => Custom_TimePickerState();
@@ -20,8 +20,8 @@ class Custom_TimePickerState extends State<CustomTimePicker> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Constants.needsTwoTimePickers(widget.parameter)
-            ? Text("start:")
-            : Text("at:"),
+            ? const Text("start:")
+            : const Text("at:"),
         Container(
             padding: const EdgeInsets.only(
               top: 10,
@@ -37,8 +37,8 @@ class Custom_TimePickerState extends State<CustomTimePicker> {
             )),
         Constants.needsTwoTimePickers(widget.parameter)
             ? Row(children: [
-                SizedBox(width: 35.0),
-                Text("end:"),
+                const SizedBox(width: 35.0),
+                const Text("end:"),
                 Container(
                     padding: const EdgeInsets.only(
                       top: 10,

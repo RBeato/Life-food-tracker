@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lifestyle_tracker/UI/daily_edit_page/weight_text_form.dart';
 import '../../constants.dart';
 import 'description.dart';
 import 'auto_eval_quantified_params.dart';
@@ -38,10 +39,7 @@ class Formulary extends ConsumerWidget {
                     children: const [
                       Description(),
                       SizedBox(height: 15.0),
-                      Text(
-                        "Weight: 76.0 Kg add textform field",
-                        textAlign: TextAlign.start,
-                      ),
+                      WeightTextForm(),
                       SizedBox(height: 15.0),
                       AutoEvalQuantifiedParams(),
                     ],

@@ -4,10 +4,18 @@ import 'package:lifestyle_tracker/models/daily_register.dart';
 import 'package:intl/intl.dart';
 import 'package:lifestyle_tracker/models/substances_options.dart';
 
+import 'edited_day_date_time_provider.dart';
+
+final registerProvider = StateNotifierProvider<Register, DailyRegister>((ref) {
+  final date = ref.watch(editedDayDateTimeProvider);
+  final dayDate = DateFormat('yyyy-MM-dd').format(date);
+  return Register(dayDate);
+});
+
 class Register extends StateNotifier<DailyRegister> {
-  Register(DailyRegister state)
+  Register(String date)
       : super(DailyRegister(
-          registerCreationDate: DateTime.now(),
+          registerCreationDate: date,
           bodyWeight: 0,
           description: "",
           drinks: [],
@@ -26,58 +34,65 @@ class Register extends StateNotifier<DailyRegister> {
 
     String currentDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-    final myTransaction = box.get(currentDate);
+    final register = box.get(currentDate);
+    if (register != null) {
+      state = register;
+    }
   }
 
-  Future<void> editRegister(
-    DateTime registerCreationDate,
-    String description,
-    int sleepQuality,
-    int energyLevel,
-    double bodyWeight,
-    int mood,
-    List<Symptom> symptoms,
-    List<Exercise> exercise,
-    List<Meditation> meditation,
-    List<Meal> meal,
-    List<Supplement> supplements,
-    List<Drink> drinks,
-    List<Snack> snacks,
-  ) async {
-    //TODO: make dailyRegister fields nullable
+  void edit({
+    String? registerCreationDate,
+    String? description,
+    int? sleepQuality,
+    int? energyLevel,
+    double? bodyWeight,
+    int? mood,
+    List<Symptom>? symptoms,
+    List<Exercise>? exercise,
+    List<Meditation>? meditation,
+    List<Meal>? meals,
+    List<Supplement>? supplements,
+    List<Drink>? drinks,
+    List<Snack>? snacks,
+  }) {
+    DailyRegister register = state;
 
-    final register = DailyRegister(
-      registerCreationDate: registerCreationDate,
-      bodyWeight: bodyWeight,
-      description: description,
-      drinks: drinks,
-      energyLevel: energyLevel,
-      exercise: exercise,
-      meals: meal,
-      meditation: meditation,
-      mood: mood,
-      sleepQuality: sleepQuality,
-      snacks: snacks,
-      supplements: supplements,
-      symptoms: symptoms,
+    register = DailyRegister(
+      registerCreationDate: registerCreationDate ?? state.registerCreationDate,
+      bodyWeight: bodyWeight ?? state.bodyWeight,
+      description: description ?? state.description,
+      drinks: drinks ?? state.drinks,
+      energyLevel: energyLevel ?? state.energyLevel,
+      exercise: exercise ?? state.exercise,
+      meals: meals ?? state.meals,
+      meditation: meditation ?? state.meditation,
+      mood: mood ?? state.mood,
+      sleepQuality: sleepQuality ?? state.sleepQuality,
+      snacks: snacks ?? state.snacks,
+      supplements: supplements ?? state.supplements,
+      symptoms: symptoms ?? state.symptoms,
     );
-    String ymdDate = DateFormat('yyyy-MM-dd').format(registerCreationDate);
-    print(ymdDate);
+    print("Edited Register: $register");
+  }
 
-    state = register;
+  Future<void> saveToDevice() async {
+    String ymdDate = state.registerCreationDate!;
 
     final box = Boxes.getRegisters();
-    box.put(ymdDate, register);
+    box.put(ymdDate, state);
+    print("Saving the info related to $ymdDate");
   }
 
   //TODO: allow deleting complete daily register.
 
-  Future<void> deleteRegister(DateTime selectedDate) async {
+  Future<void> deleteFromDevice(DateTime selectedDate) async {
     String ymdDate = DateFormat('yyyy-MM-dd').format(selectedDate);
 
     final box = Boxes.getRegisters();
     if (box.containsKey(ymdDate)) {
       box.delete(ymdDate);
     }
+    //state = emptyDailyRegister();//!
+    print("deleted Register");
   }
 }
