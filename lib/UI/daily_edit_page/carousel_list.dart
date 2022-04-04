@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../constants.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'carousel_card.dart';
 
-class CarouselList extends StatefulWidget {
+final currentCardPageProvider = StateProvider<int>((ref) => 0);
+final selectedParameterProvider = StateProvider<String>((ref) => "Exercise");
+
+class CarouselList extends ConsumerStatefulWidget {
   const CarouselList({Key? key, required this.parameters}) : super(key: key);
 
   final List<String> parameters;
@@ -12,15 +14,13 @@ class CarouselList extends StatefulWidget {
   _CarouselListState createState() => _CarouselListState();
 }
 
-class _CarouselListState extends State<CarouselList> {
+class _CarouselListState extends ConsumerState<CarouselList> {
   int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.parameters == Constants.routineActions
-          ? MediaQuery.of(context).size.height * 0.45
-          : MediaQuery.of(context).size.height * 0.35,
+      height: MediaQuery.of(context).size.height * 0.45,
       child: Column(
         children: <Widget>[
           Expanded(
@@ -29,8 +29,8 @@ class _CarouselListState extends State<CarouselList> {
               itemCount: widget.parameters.length,
               itemBuilder: (context, index) {
                 return Opacity(
-                  opacity: currentPage == index ? 1.0 : 0.8,
-                  child: CarouselCard(widget.parameters[index]),
+                  opacity: currentPage == index ? 1.0 : 0.75,
+                  child: CarouselCard(widget.parameters[index], index),
                 );
               },
               controller:
@@ -56,13 +56,14 @@ class _CarouselListState extends State<CarouselList> {
         children: parameters.map(
           (item) {
             var index = parameters.indexOf(item);
-            return Container(
-              width: 7.0,
-              height: 7.0,
-              margin: const EdgeInsets.symmetric(horizontal: 6.0),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: currentPage == index ? Colors.red : Color(0xFFA6AEBD),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              child: Icon(
+                Icons.circle,
+                size: 10.0,
+                color: currentPage == index
+                    ? Colors.blue
+                    : const Color(0xFFA6AEBD),
               ),
             );
           },

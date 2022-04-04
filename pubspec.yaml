@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  eva_icons_flutter: ^3.1.0
+  font_awesome_flutter: ^10.1.0
   fluttertoast: ^8.0.8
   flutter_riverpod: ^1.0.3
   hive: ^2.0.5

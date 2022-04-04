@@ -54,8 +54,10 @@ class _DescriptionState extends ConsumerState<Description> {
             ? Column(
                 children: [
                   CustomTextField(
-                      descriptionCtrl: _descriptionCtrl,
-                      hintText: "How was your day?"),
+                    descriptionCtrl: _descriptionCtrl,
+                    hintText: "How was your day?",
+                    onEditingComplete: () {},
+                  ),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(

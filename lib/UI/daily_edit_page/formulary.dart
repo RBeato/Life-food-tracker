@@ -45,8 +45,10 @@ class Formulary extends ConsumerWidget {
                     ],
                   ),
                 ),
-                CarouselList(parameters: Constants.routineActions),
-                CarouselList(parameters: Constants.medsAndSymptoms),
+                CarouselList(parameters: [
+                  ...Constants.routineActions,
+                  ...Constants.medsAndSymptoms
+                ]),
                 const SizedBox(
                   height: 15.0,
                 )

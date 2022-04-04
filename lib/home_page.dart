@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lifestyle_tracker/UI/common_widgets/dismiss_keyboard.dart';
 
 import 'UI/settings_page/settings.dart';
 import 'UI/stats/stats_page.dart';
@@ -23,36 +24,38 @@ class HomePageState extends ConsumerState<HomePage>
   // ignore: must_call_super
   Widget build(BuildContext context) {
     int tabIndex = ref.watch(tabIndexProvider);
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (int index) {
-          ref.read(tabIndexProvider.notifier).state = index;
-        },
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined),
-            label: 'Today',
-          ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.calendar_view_month_outlined),
-          //   label: 'Calendar',
-          // ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.auto_graph),
-            label: 'Stats',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
+    return DismissKeyboard(
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (int index) {
+            ref.read(tabIndexProvider.notifier).state = index;
+          },
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today_outlined),
+              label: 'Today',
+            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.calendar_view_month_outlined),
+            //   label: 'Calendar',
+            // ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.auto_graph),
+              label: 'Stats',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+          ],
+        ),
+        backgroundColor: Colors.white,
+        body: SafeArea(
+            child: WillPopScope(
+                onWillPop: () => popped(), child: _getBody(tabIndex))),
       ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-          child: WillPopScope(
-              onWillPop: () => popped(), child: _getBody(tabIndex))),
     );
   }
 
