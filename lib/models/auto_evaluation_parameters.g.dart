@@ -18,9 +18,9 @@ class AutoEvaluationParameterAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return AutoEvaluationParameter(
-      sleep: fields[0] as int?,
-      mood: fields[1] as int?,
-      energy: fields[2] as int?,
+      sleep: fields[0] as double?,
+      mood: fields[1] as double?,
+      energy: fields[2] as double?,
     );
   }
 

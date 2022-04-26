@@ -83,5 +83,5 @@ class Parameter {
   Parameter(this.date, this.value);
 
   DateTime? date;
-  int? value;
+  double? value;
 }

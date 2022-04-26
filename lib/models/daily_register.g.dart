@@ -19,10 +19,10 @@ class DailyRegisterAdapter extends TypeAdapter<DailyRegister> {
     return DailyRegister(
       registerCreationDate: fields[0] as String?,
       description: fields[1] as String?,
-      sleepQuality: fields[2] as int?,
-      energyLevel: fields[3] as int?,
+      sleepQuality: fields[2] as double?,
+      energyLevel: fields[3] as double?,
       bodyWeight: fields[5] as double?,
-      mood: fields[4] as int?,
+      mood: fields[4] as double?,
       symptoms: (fields[6] as List?)?.cast<Symptom>(),
       exercise: (fields[7] as List?)?.cast<Exercise>(),
       meditation: (fields[8] as List?)?.cast<Meditation>(),
@@ -91,7 +91,7 @@ class ExerciseAdapter extends TypeAdapter<Exercise> {
     return Exercise(
       duration: fields[2] as int?,
       exerciseType: fields[3] as String?,
-      exerciseQuality: fields[4] as int?,
+      exerciseQuality: fields[4] as double?,
       dateTime: fields[5] as DateTime?,
     )
       ..title = fields[0] as String
@@ -139,7 +139,7 @@ class SymptomAdapter extends TypeAdapter<Symptom> {
     };
     return Symptom(
       symptoms: (fields[0] as List?)?.cast<String>(),
-      symptomAverageSeverity: fields[1] as int?,
+      symptomAverageSeverity: fields[1] as double?,
     );
   }
 
@@ -177,7 +177,7 @@ class MeditationAdapter extends TypeAdapter<Meditation> {
     return Meditation(
       duration: fields[2] as int?,
       meditationType: fields[3] as String?,
-      meditationQuality: fields[4] as int?,
+      meditationQuality: fields[4] as double?,
       dateTime: fields[5] as DateTime?,
     )
       ..title = fields[0] as String

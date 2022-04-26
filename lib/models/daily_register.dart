@@ -15,13 +15,13 @@ class DailyRegister extends HiveObject {
   String? description;
 
   @HiveField(2)
-  int? sleepQuality;
+  double? sleepQuality;
 
   @HiveField(3)
-  int? energyLevel;
+  double? energyLevel;
 
   @HiveField(4)
-  int? mood;
+  double? mood;
 
   @HiveField(5)
   double? bodyWeight;
@@ -120,7 +120,7 @@ class Exercise {
   String? exerciseType; //TODO:Create enum
 
   @HiveField(4)
-  int? exerciseQuality; //TODO:Create enum
+  double? exerciseQuality; //TODO:Create enum
 
   @HiveField(5)
   DateTime? dateTime;
@@ -139,7 +139,7 @@ class Symptom {
   List<String>? symptoms;
 
   @HiveField(1)
-  int? symptomAverageSeverity;
+  double? symptomAverageSeverity;
 
   Symptom({
     this.symptoms,
@@ -162,7 +162,7 @@ class Meditation {
   String? meditationType; //TODO:Create enum
 
   @HiveField(4)
-  int? meditationQuality; //TODO:Create enum
+  double? meditationQuality; //TODO:Create enum
 
   @HiveField(5)
   DateTime? dateTime;

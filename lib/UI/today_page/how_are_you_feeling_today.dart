@@ -59,5 +59,5 @@ class _TodayCircularChartState extends State<TodayCircularChart> {
 class DailyResultData {
   DailyResultData(this.name, this.value);
   final String name;
-  final int value;
+  final double value;
 }

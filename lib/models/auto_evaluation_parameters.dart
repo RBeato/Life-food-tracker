@@ -7,13 +7,13 @@ class AutoEvaluationParameter {
   AutoEvaluationParameter({this.sleep, this.mood, this.energy});
 
   @HiveField(0)
-  int? sleep;
+  double? sleep;
 
   @HiveField(1)
-  int? mood;
+  double? mood;
 
   @HiveField(2)
-  int? energy;
+  double? energy;
 
   @override
   String toString() {

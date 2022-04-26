@@ -43,10 +43,10 @@ class Register extends StateNotifier<DailyRegister> {
   void edit({
     String? registerCreationDate,
     String? description,
-    int? sleepQuality,
-    int? energyLevel,
+    double? sleepQuality,
+    double? energyLevel,
     double? bodyWeight,
-    int? mood,
+    double? mood,
     List<Symptom>? symptoms,
     List<Exercise>? exercise,
     List<Meditation>? meditation,
@@ -73,6 +73,8 @@ class Register extends StateNotifier<DailyRegister> {
       symptoms: symptoms ?? state.symptoms,
     );
     print("Edited Register: $register");
+
+    state = register;
   }
 
   Future<void> saveToDevice() async {
@@ -95,4 +97,20 @@ class Register extends StateNotifier<DailyRegister> {
     //state = emptyDailyRegister();//!
     print("deleted Register");
   }
+
+  getSingleRegister(String parameter) => {
+        "registerCreationDate": state.registerCreationDate,
+        "bodyWeight": state.bodyWeight,
+        "description": state.description,
+        "drinks": state.drinks,
+        "energyLevel": state.energyLevel,
+        "exercise": state.exercise,
+        "meals": state.meals,
+        "meditation": state.meditation,
+        "mood": state.mood,
+        "sleepQuality": state.sleepQuality,
+        "snacks": state.snacks,
+        "supplements": state.supplements,
+        "symptoms": state.symptoms,
+      }[parameter];
 }
