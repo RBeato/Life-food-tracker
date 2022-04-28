@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lifestyle_tracker/UI/common_widgets/time_picker_spinner.dart';
+import 'package:lifestyle_tracker/UI/common/time_picker_spinner.dart';
 
-import '../../constants.dart';
+import '../../../constants.dart';
 
 class CustomTimePicker extends StatefulWidget {
   const CustomTimePicker(this.parameter, {Key? key}) : super(key: key);

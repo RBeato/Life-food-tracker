@@ -3,12 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lifestyle_tracker/providers/daily_register_provider.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-import '../../constants.dart';
+import '../../../constants.dart';
+
+final sliderValueProvider =
+    StateProvider.family<double?, Object>((ref, item) => {
+          Constants.autoEvaluationQuantifiedParameters[0]: 0.0,
+          Constants.autoEvaluationQuantifiedParameters[1]: 0.0,
+          Constants.autoEvaluationQuantifiedParameters[2]: 0.0,
+        }[item]);
 
 class SliderButton extends ConsumerStatefulWidget {
-  SliderButton(this.item, {Key? key}) : super(key: key);
+  const SliderButton(this.item, {Key? key}) : super(key: key);
 
-  String item;
+  final String item;
 
   @override
   _SliderButtonState createState() => _SliderButtonState();
@@ -17,23 +24,20 @@ class SliderButton extends ConsumerStatefulWidget {
 class _SliderButtonState extends ConsumerState<SliderButton> {
   final double _min = 0;
   final double _max = 10;
-  double? _value;
 
   @override
   Widget build(BuildContext context) {
-    _value =
-        ref.watch(registerProvider.notifier).getSingleRegister(widget.item) ??
-            0.0;
+    final _value = ref.watch(sliderValueProvider(widget.item));
+
     String title = Constants.dailyRegisterToUIString[widget.item]!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          // textAlign: TextAlign.start,
         ),
         SfSlider(
-          value: _value ?? 0.0,
+          value: _value,
           labelPlacement: LabelPlacement.betweenTicks,
           enableTooltip: true,
           interval: 1,
@@ -45,9 +49,7 @@ class _SliderButtonState extends ConsumerState<SliderButton> {
             _registerValue(register, title, _value!);
           },
           onChanged: (value) {
-            setState(() {
-              _value = value;
-            });
+            ref.read(sliderValueProvider(widget.item).notifier).state = value;
           },
         ),
       ],

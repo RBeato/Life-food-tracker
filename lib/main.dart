@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'home_page.dart';
-import 'models/daily_register.dart';
+import 'models/daily_edit_parameters/daily_register.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

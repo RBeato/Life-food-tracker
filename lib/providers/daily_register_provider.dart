@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lifestyle_tracker/hive_boxes/boxes.dart';
-import 'package:lifestyle_tracker/models/daily_register.dart';
 import 'package:intl/intl.dart';
-import 'package:lifestyle_tracker/models/substances_options.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/activity_options.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/daily_register.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/intake_options.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/symptom.dart';
 
 import 'edited_day_date_time_provider.dart';
 
@@ -17,7 +19,7 @@ class Register extends StateNotifier<DailyRegister> {
       : super(DailyRegister(
           registerCreationDate: date,
           bodyWeight: 0,
-          description: "",
+          description: "Description",
           drinks: [],
           energyLevel: 0,
           exercise: [],
@@ -113,4 +115,6 @@ class Register extends StateNotifier<DailyRegister> {
         "supplements": state.supplements,
         "symptoms": state.symptoms,
       }[parameter];
+
+  void updateSingleRegister() {}
 }

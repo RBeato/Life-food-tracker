@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'auto_evaluation_parameters.g.dart';
 
-@HiveType(typeId: 9)
+@HiveType(typeId: 11)
 class AutoEvaluationParameter {
   AutoEvaluationParameter({this.sleep, this.mood, this.energy});
 

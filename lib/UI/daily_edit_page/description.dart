@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lifestyle_tracker/providers/daily_register_provider.dart';
 
-import 'custom_text_field.dart';
+import 'common/custom_text_field.dart';
+import 'common/custom_text_field.dart';
 
 final showDescriptionPanelProvider = StateProvider<bool>((ref) => false);
 
@@ -15,6 +16,7 @@ class Description extends ConsumerStatefulWidget {
 
 class _DescriptionState extends ConsumerState<Description> {
   late TextEditingController _descriptionCtrl;
+  bool showDescriptionPanel = false;
 
   @override
   void initState() {
@@ -22,11 +24,26 @@ class _DescriptionState extends ConsumerState<Description> {
     _descriptionCtrl = TextEditingController(); //received saved description
   }
 
+  void onEditingComplete() {
+    saveDescription();
+    closeForm();
+  }
+
+  void saveDescription() {
+    ref
+        .read(registerProvider.notifier)
+        .edit(description: _descriptionCtrl.text);
+  }
+
+  void closeForm() {
+    ref.read(showDescriptionPanelProvider.notifier).state =
+        !showDescriptionPanel;
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool showDescriptionPanel = ref.watch(showDescriptionPanelProvider);
-    String descriptionString = ref.watch(registerProvider).description ??
-        "Please add a description for today!";
+    showDescriptionPanel = ref.watch(showDescriptionPanelProvider);
+    String? description = ref.watch(registerProvider).description;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -56,25 +73,23 @@ class _DescriptionState extends ConsumerState<Description> {
                   CustomTextField(
                     descriptionCtrl: _descriptionCtrl,
                     hintText: "How was your day?",
-                    onEditingComplete: () {},
+                    onEditingComplete: () {
+                      onEditingComplete();
+                    },
                   ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      child: const Text("Save"),
-                      onPressed: () {
-                        ref.read(showDescriptionPanelProvider.notifier).state =
-                            !showDescriptionPanel;
-                        ref
-                            .read(registerProvider.notifier)
-                            .edit(description: _descriptionCtrl.text);
-                      },
-                    ),
-                  ),
+                  // Align(
+                  //   alignment: Alignment.bottomRight,
+                  //   child: ElevatedButton(
+                  //     child: const Text("Save"),
+                  //     onPressed: () {
+                  //       onEditingComplete();
+                  //     },
+                  //   ),
+                  // ),
                 ],
               )
             : Text(
-                "\"$descriptionString\"",
+                "\"$description\"",
                 style: const TextStyle(fontStyle: FontStyle.italic),
               ),
       ],

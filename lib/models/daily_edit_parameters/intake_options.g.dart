@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'substances_options.dart';
+part of 'intake_options.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -21,18 +21,19 @@ class MealAdapter extends TypeAdapter<Meal> {
       (fields[1] as List).cast<String>(),
       fields[2] as DateTime,
       duration: fields[3] as int?,
+      briefDescription: fields[4] as String?,
     )
-      ..title = fields[4] as String
-      ..color = fields[5] as Color;
+      ..title = fields[5] as String
+      ..color = fields[6] as Color;
   }
 
   @override
   void write(BinaryWriter writer, Meal obj) {
     writer
-      ..writeByte(6)
-      ..writeByte(4)
-      ..write(obj.title)
+      ..writeByte(7)
       ..writeByte(5)
+      ..write(obj.title)
+      ..writeByte(6)
       ..write(obj.color)
       ..writeByte(0)
       ..write(obj.name)
@@ -41,7 +42,9 @@ class MealAdapter extends TypeAdapter<Meal> {
       ..writeByte(2)
       ..write(obj.dateTime)
       ..writeByte(3)
-      ..write(obj.duration);
+      ..write(obj.duration)
+      ..writeByte(4)
+      ..write(obj.briefDescription);
   }
 
   @override
@@ -70,18 +73,19 @@ class SupplementAdapter extends TypeAdapter<Supplement> {
       (fields[1] as List).cast<String>(),
       fields[2] as DateTime,
       duration: fields[3] as int?,
+      briefDescription: fields[4] as String?,
     )
-      ..title = fields[4] as String
-      ..color = fields[5] as Color;
+      ..title = fields[5] as String
+      ..color = fields[6] as Color;
   }
 
   @override
   void write(BinaryWriter writer, Supplement obj) {
     writer
-      ..writeByte(6)
-      ..writeByte(4)
-      ..write(obj.title)
+      ..writeByte(7)
       ..writeByte(5)
+      ..write(obj.title)
+      ..writeByte(6)
       ..write(obj.color)
       ..writeByte(0)
       ..write(obj.name)
@@ -90,7 +94,9 @@ class SupplementAdapter extends TypeAdapter<Supplement> {
       ..writeByte(2)
       ..write(obj.dateTime)
       ..writeByte(3)
-      ..write(obj.duration);
+      ..write(obj.duration)
+      ..writeByte(4)
+      ..write(obj.briefDescription);
   }
 
   @override
@@ -119,18 +125,19 @@ class MedicationAdapter extends TypeAdapter<Medication> {
       (fields[1] as List).cast<String>(),
       fields[2] as DateTime,
       duration: fields[3] as int?,
+      briefDescription: fields[4] as String?,
     )
-      ..title = fields[4] as String
-      ..color = fields[5] as Color;
+      ..title = fields[5] as String
+      ..color = fields[6] as Color;
   }
 
   @override
   void write(BinaryWriter writer, Medication obj) {
     writer
-      ..writeByte(6)
-      ..writeByte(4)
-      ..write(obj.title)
+      ..writeByte(7)
       ..writeByte(5)
+      ..write(obj.title)
+      ..writeByte(6)
       ..write(obj.color)
       ..writeByte(0)
       ..write(obj.name)
@@ -139,7 +146,9 @@ class MedicationAdapter extends TypeAdapter<Medication> {
       ..writeByte(2)
       ..write(obj.dateTime)
       ..writeByte(3)
-      ..write(obj.duration);
+      ..write(obj.duration)
+      ..writeByte(4)
+      ..write(obj.briefDescription);
   }
 
   @override
@@ -168,18 +177,19 @@ class DrinkAdapter extends TypeAdapter<Drink> {
       (fields[1] as List).cast<String>(),
       fields[2] as DateTime,
       duration: fields[3] as int?,
+      briefDescription: fields[4] as String?,
     )
-      ..title = fields[4] as String
-      ..color = fields[5] as Color;
+      ..title = fields[5] as String
+      ..color = fields[6] as Color;
   }
 
   @override
   void write(BinaryWriter writer, Drink obj) {
     writer
-      ..writeByte(6)
-      ..writeByte(4)
-      ..write(obj.title)
+      ..writeByte(7)
       ..writeByte(5)
+      ..write(obj.title)
+      ..writeByte(6)
       ..write(obj.color)
       ..writeByte(0)
       ..write(obj.name)
@@ -188,7 +198,9 @@ class DrinkAdapter extends TypeAdapter<Drink> {
       ..writeByte(2)
       ..write(obj.dateTime)
       ..writeByte(3)
-      ..write(obj.duration);
+      ..write(obj.duration)
+      ..writeByte(4)
+      ..write(obj.briefDescription);
   }
 
   @override
@@ -217,18 +229,19 @@ class SnackAdapter extends TypeAdapter<Snack> {
       (fields[1] as List).cast<String>(),
       fields[2] as DateTime,
       duration: fields[3] as int?,
+      briefDescription: fields[4] as String?,
     )
-      ..title = fields[4] as String
-      ..color = fields[5] as Color;
+      ..title = fields[5] as String
+      ..color = fields[6] as Color;
   }
 
   @override
   void write(BinaryWriter writer, Snack obj) {
     writer
-      ..writeByte(6)
-      ..writeByte(4)
-      ..write(obj.title)
+      ..writeByte(7)
       ..writeByte(5)
+      ..write(obj.title)
+      ..writeByte(6)
       ..write(obj.color)
       ..writeByte(0)
       ..write(obj.name)
@@ -237,7 +250,9 @@ class SnackAdapter extends TypeAdapter<Snack> {
       ..writeByte(2)
       ..write(obj.dateTime)
       ..writeByte(3)
-      ..write(obj.duration);
+      ..write(obj.duration)
+      ..writeByte(4)
+      ..write(obj.briefDescription);
   }
 
   @override

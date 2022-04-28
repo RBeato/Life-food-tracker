@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifestyle_tracker/UI/common_widgets/item_list_editor.dart';
+import 'package:lifestyle_tracker/UI/common/item_list_editor.dart';
 import 'package:lifestyle_tracker/constants.dart';
 
 class ParameterListEditPopUp extends StatefulWidget {
@@ -47,7 +47,7 @@ class _ParameterListEditPopUpState extends State<ParameterListEditPopUp> {
                       offset: Offset(0, 10),
                       blurRadius: 10),
                 ]),
-            child: ItemListEditor(),
+            child: const ItemListEditor(),
           ),
           Positioned(
             left: Constants.padding,

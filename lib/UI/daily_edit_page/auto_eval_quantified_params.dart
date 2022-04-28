@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lifestyle_tracker/constants.dart';
 import 'package:lifestyle_tracker/providers/daily_register_provider.dart';
 
-import 'slider_button.dart';
+import 'common/slider_button.dart';
 
 class AutoEvalQuantifiedParams extends ConsumerWidget {
   const AutoEvalQuantifiedParams({Key? key}) : super(key: key);

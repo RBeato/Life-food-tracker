@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lifestyle_tracker/UI/daily_edit_page/weight_text_form.dart';
+import 'package:lifestyle_tracker/UI/daily_edit_page/weight_text_form/weight_text_form.dart';
 import '../../constants.dart';
+import 'card_carousel/carousel_list.dart';
 import 'description.dart';
 import 'auto_eval_quantified_params.dart';
-import 'carousel_list.dart';
 
 final showSymptomsPanelProvider = StateProvider<bool>((ref) => false);
 
@@ -45,10 +45,7 @@ class Formulary extends ConsumerWidget {
                     ],
                   ),
                 ),
-                CarouselList(parameters: [
-                  ...Constants.routineActions,
-                  ...Constants.medsAndSymptoms
-                ]),
+                const CarouselWidget(),
                 const SizedBox(
                   height: 15.0,
                 )

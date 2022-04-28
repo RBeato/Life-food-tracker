@@ -1,11 +1,12 @@
 import 'package:hive/hive.dart';
 
-part 'substance.g.dart';
+part 'intake.g.dart';
 
 @HiveType(typeId: 4)
-class Substance {
-  Substance({
+class Intake {
+  Intake({
     required this.name,
+    this.briefDescription,
     required this.ingredients,
     required this.dateTime,
     this.duration = 10,
@@ -22,12 +23,16 @@ class Substance {
   @HiveField(3)
   int duration;
 
+  @HiveField(4)
+  String? briefDescription;
+
   @override
   String toString() {
     return """
     String $name,
     Ingredients: $ingredients, 
-    DateTime: $dateTime
+    DateTime: $dateTime,
+    Brief Description: $briefDescription,
     Duration: $duration""";
   }
 }

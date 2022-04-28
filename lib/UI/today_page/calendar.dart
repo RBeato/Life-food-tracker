@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lifestyle_tracker/UI/common_widgets/dialog_box.dart';
+import 'package:lifestyle_tracker/UI/common/dialog_box.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import 'calendar_view_selection.dart';

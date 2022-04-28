@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lifestyle_tracker/models/daily_register.dart';
 import 'package:lifestyle_tracker/providers/daily_register_provider.dart';
 
 class WeightTextForm extends ConsumerStatefulWidget {

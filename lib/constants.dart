@@ -2,18 +2,33 @@ class Constants {
   static double padding = 20;
   static double avatarRadius = 45;
 
+  static List<String> completeParameterOptions = [
+    ...intakeOptions,
+    ...activityOptions,
+    ...symptomOptions
+  ];
+
+  static List<String> intakeOptions = [
+    "meals",
+    "drinks",
+    "snacks",
+    "supplements",
+    "medication",
+  ];
+
+  static List<String> activityOptions = [
+    "exercise",
+    "meditation",
+  ];
+
+  static List<String> symptomOptions = ["symptoms"];
+
   static List<String> routineActions = [
     "exercise",
     "meditation",
     "meals",
     "drinks",
     "snacks",
-  ];
-
-  static List<String> medsAndSymptoms = [
-    "supplements",
-    "medication",
-    "symptoms",
   ];
 
   static List<String> autoEvaluationQuantifiedParameters = [

@@ -1,39 +1,47 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auto_evaluation_parameters.dart';
+part of 'activity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class AutoEvaluationParameterAdapter
-    extends TypeAdapter<AutoEvaluationParameter> {
+class ActivityAdapter extends TypeAdapter<Activity> {
   @override
-  final int typeId = 9;
+  final int typeId = 0;
 
   @override
-  AutoEvaluationParameter read(BinaryReader reader) {
+  Activity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return AutoEvaluationParameter(
-      sleep: fields[0] as double?,
-      mood: fields[1] as double?,
-      energy: fields[2] as double?,
+    return Activity(
+      title: fields[0] as String?,
+      briefDescription: fields[1] as String?,
+      dateTime: fields[2] as DateTime,
+      duration: fields[3] as int,
+      type: fields[4] as String?,
+      quality: fields[5] as double?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, AutoEvaluationParameter obj) {
+  void write(BinaryWriter writer, Activity obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(6)
       ..writeByte(0)
-      ..write(obj.sleep)
+      ..write(obj.title)
       ..writeByte(1)
-      ..write(obj.mood)
+      ..write(obj.briefDescription)
       ..writeByte(2)
-      ..write(obj.energy);
+      ..write(obj.dateTime)
+      ..writeByte(3)
+      ..write(obj.duration)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.quality);
   }
 
   @override
@@ -42,7 +50,7 @@ class AutoEvaluationParameterAdapter
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AutoEvaluationParameterAdapter &&
+      other is ActivityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

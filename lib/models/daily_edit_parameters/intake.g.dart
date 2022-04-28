@@ -1,23 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'substance.dart';
+part of 'intake.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SubstanceAdapter extends TypeAdapter<Substance> {
+class IntakeAdapter extends TypeAdapter<Intake> {
   @override
   final int typeId = 4;
 
   @override
-  Substance read(BinaryReader reader) {
+  Intake read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Substance(
+    return Intake(
       name: fields[0] as String,
+      briefDescription: fields[4] as String?,
       ingredients: (fields[1] as List).cast<String>(),
       dateTime: fields[2] as DateTime,
       duration: fields[3] as int,
@@ -25,9 +26,9 @@ class SubstanceAdapter extends TypeAdapter<Substance> {
   }
 
   @override
-  void write(BinaryWriter writer, Substance obj) {
+  void write(BinaryWriter writer, Intake obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class SubstanceAdapter extends TypeAdapter<Substance> {
       ..writeByte(2)
       ..write(obj.dateTime)
       ..writeByte(3)
-      ..write(obj.duration);
+      ..write(obj.duration)
+      ..writeByte(4)
+      ..write(obj.briefDescription);
   }
 
   @override
@@ -44,7 +47,7 @@ class SubstanceAdapter extends TypeAdapter<Substance> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SubstanceAdapter &&
+      other is IntakeAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

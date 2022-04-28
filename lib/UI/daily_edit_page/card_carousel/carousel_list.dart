@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../constants.dart';
 import 'carousel_card.dart';
 
-final currentCardPageProvider = StateProvider<int>((ref) => 0);
-final selectedParameterProvider = StateProvider<String>((ref) => "Exercise");
+final currentCardPageIndexProvider = StateProvider<int>((ref) => 0);
 
-class CarouselList extends ConsumerStatefulWidget {
-  const CarouselList({Key? key, required this.parameters}) : super(key: key);
+final selectedParameterProvider = StateProvider<String>((ref) {
+  int index = ref.watch(currentCardPageIndexProvider);
+  return Constants.completeParameterOptions[index];
+});
 
-  final List<String> parameters;
+class CarouselWidget extends ConsumerStatefulWidget {
+  const CarouselWidget({Key? key}) : super(key: key);
 
   @override
   _CarouselListState createState() => _CarouselListState();
 }
 
-class _CarouselListState extends ConsumerState<CarouselList> {
+class _CarouselListState extends ConsumerState<CarouselWidget> {
   int currentPage = 0;
+  late List<String> parameters;
+
+  @override
+  void initState() {
+    super.initState();
+    parameters = Constants.completeParameterOptions;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +36,11 @@ class _CarouselListState extends ConsumerState<CarouselList> {
           Expanded(
             child: PageView.builder(
               padEnds: true,
-              itemCount: widget.parameters.length,
+              itemCount: parameters.length,
               itemBuilder: (context, index) {
                 return Opacity(
-                  opacity: currentPage == index ? 1.0 : 0.75,
-                  child: CarouselCard(widget.parameters[index], index),
+                  opacity: currentPage == index ? 1.0 : 0.65,
+                  child: CarouselCard(index),
                 );
               },
               controller:
@@ -42,7 +52,7 @@ class _CarouselListState extends ConsumerState<CarouselList> {
               },
             ),
           ),
-          updateIndicators(widget.parameters),
+          updateIndicators(parameters),
         ],
       ),
     );

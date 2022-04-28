@@ -1,12 +1,12 @@
-//overall quality is measured from 1 to 10 (integers only)
-
-import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:lifestyle_tracker/models/substances_options.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/symptom.dart';
+
+import 'activity_options.dart';
+import 'intake_options.dart';
 
 part 'daily_register.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 10)
 class DailyRegister extends HiveObject {
   @HiveField(0)
   String? registerCreationDate;
@@ -103,74 +103,4 @@ class DailyRegister extends HiveObject {
       snacks: $snacks,
        """;
   }
-}
-
-@HiveType(typeId: 1)
-class Exercise {
-  @HiveField(0)
-  String title = "Workout";
-
-  @HiveField(1)
-  Color color = Colors.blue;
-
-  @HiveField(2)
-  int? duration;
-
-  @HiveField(3)
-  String? exerciseType; //TODO:Create enum
-
-  @HiveField(4)
-  double? exerciseQuality; //TODO:Create enum
-
-  @HiveField(5)
-  DateTime? dateTime;
-
-  Exercise({
-    this.duration,
-    this.exerciseType,
-    this.exerciseQuality,
-    this.dateTime,
-  });
-}
-
-@HiveType(typeId: 2)
-class Symptom {
-  @HiveField(0)
-  List<String>? symptoms;
-
-  @HiveField(1)
-  double? symptomAverageSeverity;
-
-  Symptom({
-    this.symptoms,
-    this.symptomAverageSeverity,
-  });
-}
-
-@HiveType(typeId: 3)
-class Meditation {
-  @HiveField(0)
-  String title = "Meditation";
-
-  @HiveField(1)
-  Color color = Colors.purple;
-
-  @HiveField(2)
-  int? duration;
-
-  @HiveField(3)
-  String? meditationType; //TODO:Create enum
-
-  @HiveField(4)
-  double? meditationQuality; //TODO:Create enum
-
-  @HiveField(5)
-  DateTime? dateTime;
-
-  Meditation({
-    this.duration,
-    this.meditationType,
-    this.meditationQuality,
-    this.dateTime,
-  });
 }

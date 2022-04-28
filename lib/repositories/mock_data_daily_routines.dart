@@ -1,6 +1,8 @@
-import 'package:lifestyle_tracker/models/daily_register.dart';
-import 'package:lifestyle_tracker/models/substances_options.dart';
 import 'package:intl/intl.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/activity_options.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/daily_register.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/intake_options.dart';
+import 'package:lifestyle_tracker/models/daily_edit_parameters/symptom.dart';
 
 import '../constants.dart';
 
@@ -21,8 +23,8 @@ List<DailyRegister> mockRegisters = [
     exercise: [
       Exercise(
         duration: 30,
-        exerciseType: "running",
-        exerciseQuality: 8,
+        type: "running",
+        quality: 8,
         dateTime: DateTime.now()
             .subtract(const Duration(days: 3))
             .add(const Duration(hours: 1))
@@ -32,8 +34,8 @@ List<DailyRegister> mockRegisters = [
     meditation: [
       Meditation(
         duration: 30,
-        meditationType: "breathing",
-        meditationQuality: 7,
+        type: "breathing",
+        quality: 7,
         dateTime: DateTime.now()
             .subtract(const Duration(days: 3))
             .add(const Duration(hours: 3))
@@ -96,8 +98,8 @@ List<DailyRegister> mockRegisters = [
     exercise: [
       Exercise(
         duration: 30,
-        exerciseType: "running",
-        exerciseQuality: 8,
+        type: "running",
+        quality: 8,
         dateTime: DateTime.now()
             .subtract(const Duration(days: 2))
             .add(const Duration(hours: 1))
@@ -107,8 +109,8 @@ List<DailyRegister> mockRegisters = [
     meditation: [
       Meditation(
         duration: 30,
-        meditationType: "breathing",
-        meditationQuality: 7,
+        type: "breathing",
+        quality: 7,
         dateTime: DateTime.now()
             .subtract(const Duration(days: 2))
             .add(const Duration(hours: 3))
@@ -171,8 +173,8 @@ List<DailyRegister> mockRegisters = [
     exercise: [
       Exercise(
         duration: 30,
-        exerciseType: "running",
-        exerciseQuality: 8,
+        type: "running",
+        quality: 8,
         dateTime: DateTime.now()
             .subtract(const Duration(days: 1))
             .add(const Duration(hours: 1))
@@ -182,8 +184,8 @@ List<DailyRegister> mockRegisters = [
     meditation: [
       Meditation(
         duration: 30,
-        meditationType: "breathing",
-        meditationQuality: 7,
+        type: "breathing",
+        quality: 7,
         dateTime: DateTime.now()
             .subtract(const Duration(days: 1))
             .add(const Duration(hours: 3))
@@ -245,8 +247,8 @@ List<DailyRegister> mockRegisters = [
     exercise: [
       Exercise(
         duration: 30,
-        exerciseType: "running",
-        exerciseQuality: 8,
+        type: "running",
+        quality: 8,
         dateTime: DateTime.now()
             .add(const Duration(hours: 2))
             .add(const Duration(minutes: 34)),
@@ -255,8 +257,8 @@ List<DailyRegister> mockRegisters = [
     meditation: [
       Meditation(
         duration: 30,
-        meditationType: "breathing",
-        meditationQuality: 7,
+        type: "breathing",
+        quality: 7,
         dateTime: DateTime.now()
             .add(const Duration(hours: 2))
             .add(const Duration(minutes: 34)),

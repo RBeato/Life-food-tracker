@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:lifestyle_tracker/UI/common_widgets/dismiss_keyboard.dart';
 
+import 'UI/common/dismiss_keyboard.dart';
 import 'UI/settings_page/settings.dart';
 import 'UI/stats/stats_page.dart';
 import 'UI/today_page/today_page.dart';
